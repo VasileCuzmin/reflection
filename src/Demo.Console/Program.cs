@@ -8,7 +8,17 @@ foreach (var type in typesFromCurrentAssembly)
 }
 
 
-var oneType = currentAssembly.GetType("Demo.Console.Person");
+var personType = currentAssembly.GetType("Demo.Console.Person");
+
+foreach (var constructor in personType?.GetConstructors())
+{
+    Console.WriteLine(constructor);
+}
+
+foreach (var method in personType?.GetMethods())
+{
+    Console.WriteLine(method);
+}
 
 var externalAssembly = Assembly.Load("System.Text.Json");
 var typesFromExternalAssembly = externalAssembly.GetTypes();
